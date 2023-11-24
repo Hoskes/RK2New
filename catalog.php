@@ -5,6 +5,7 @@ include 'header.php';
     <section>
         <h2>Каталог</h2>
         <div class="gridpane">
+            
             <?php
             include 'DBConnect.php';
             if ($mysql != null) {
@@ -12,13 +13,12 @@ include 'header.php';
                 while ($name = mysqli_fetch_assoc($result)) {
             ?>
                     <div class="cell">
-                        <div>
                             <h3><?php echo $name['name']; ?></h3>
-                            <img class="photo" title="<?php echo $name['name']; ?>" src="../RK2/pics/<?php echo $name['link']; ?>" />
-                            <div><?php echo $name['price']; ?></div>
+                            <img class="photo-catalog" title="<?php echo $name['name']; ?>" src="../RK2/pics/<?php echo $name['link']; ?>" />
+                            <div><?php echo $name['price'].' P'; ?></div>
                             <a href='product.php?var=<?php echo $name['i']; ?>'>Подробнее</a>
                         
-                            <button class="buy" onclick>Добавить в корзину</button>
+                            <button class="buy" onclick="addProduct(<?php echo $name['i']; ?>,1)">Добавить в корзину</button>
                         </div>
                 <?php
                 }
@@ -31,6 +31,9 @@ include 'header.php';
         </div>
     </section>
 </main>
+<script>
+    
+</script>
 <?php
 include 'footer.php';
 ?>

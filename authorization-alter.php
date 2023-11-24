@@ -3,21 +3,34 @@ include 'header.php';
 ?>
 <main>
     <?php
+
+
     if (isset($_POST['login']) & isset($_POST['password'])) {
         echo '<section class="notif"><p><h2>';
-        if ($_POST['login'] == "user" & $_POST['password'] == "user") {
-            echo "Авторизация прошла успешно";
-            session_start();
-            $_SESSION['is_auth'] = true;
+        include 'DBConnect.php';
+        if ($mysql != null) {
+            $result = mysqli_query($mysql, "SELECT id,login,name FROM person WHERE login='" . $_POST['login'] . "' AND password='" . $_POST['password'] . "'");
+            $name = mysqli_fetch_assoc($result);
+            if ($name != null) {
+                if ($_POST['login'] == $name['login']) {
+
+                    echo "Авторизация прошла успешно. Здравствуйте, " . $name['name'] . "!";
+                    $isauth = $name['id'];
+                    $_SESSION['autho'] = $isauth;
+                }
+            }else{
+                echo "Данные для авторизации некорректны";
+            }
         } else {
+
             echo "Данные неверны";
         }
         echo '
         </h2></p>
-        <p><a href="/Dorokhin221-361-l3-l4/index.php">На главную</a></p></section>';
+        <p><a href="index.php">На главную</a></p></section>';
     } else {
         echo '
-            <form class = "center" action="/Dorokhin221-361-l3-l4/php-pages/authorization-alter.php" method="post">
+            <form class = "center" action="authorization-alter.php" method="post">
             <p class="to-center"><h3>Форма авторизации</h3></p>
             <div class="to-center">
                 <p><input type="name" name="login" placeholder="Логин"></p>
@@ -28,7 +41,7 @@ include 'header.php';
             </form>';
     }
     ?>
-
+<script>localStorage.clear</script>
 </main>
 <?php
 include 'footer.php';

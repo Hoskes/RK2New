@@ -17,10 +17,10 @@ include 'header.php';
                 <div class="photo-fields">
                     <img class="big-photo" title="<?php echo $name['name']; ?>" src="../RK2/pics/<?php echo $name['link']; ?>" />
                 </div>
-                <div class="main-text">Цена: <?php echo $name['price']; ?></div>
+                <div class="main-text">Цена: <?php echo $name['price'].' P'; ?></div>
                 <div class="main-text"><?php echo $name['description']; ?></div>
                 
-                <button class="buy">Купить</button>
+                <button class="buy" onclick="addProduct(<?php echo $name['i']; ?>,1)">Купить</button>
         <?php
             }
         } else {

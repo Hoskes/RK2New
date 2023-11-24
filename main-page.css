@@ -144,9 +144,9 @@ footer {
     justify-content: space-around;
 }
 
-a {
+a,.exit,.buy {
     color: black;
-    border: 1px solid #e4a002;
+    border: 1px solid #876516;
     background-color: #e4a002;
     border-radius: 3px;padding: 2px;
     text-decoration: none;
@@ -171,9 +171,9 @@ a:hover {
 .photo_field,.gridpane{
     margin:auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-around;
-    grid-gap: 10px;
+    grid-gap: 5px;
 }
 .photo{
     max-width: 200px;
@@ -196,5 +196,18 @@ table,td{
 .big-photo{
     margin-left:auto;
     width: 50%;
+}
+.cell{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: 2px solid rgb(34, 37, 81);
+}
+.photo-catalog{
+    width: 70%;
+    margin: auto;
 }
 
